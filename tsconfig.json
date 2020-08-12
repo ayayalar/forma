@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        "declaration": true,
+        "declarationDir": "lib",
+        "jsx": "react",
+        "lib": [
+            "ES6",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "module": "ES6",
+        "moduleResolution": "Node",
+        "noImplicitAny": true,
+        "outDir": "lib",
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "ES5"
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/**/*"
+    ]
+}

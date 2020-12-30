@@ -1,11 +1,12 @@
 {
   "name": "@ayayalar/forma",
-  "version": "1.0.106",
+  "version": "1.1.0",
   "description": "React Form Lib.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rimraf lib && npm i && webpack"
+    "build": "rimraf lib && npm i && webpack",
+    "lint": "eslint src --color --ext .ts,tsx"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,11 @@
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "copy-webpack-plugin": "^6.0.1",
-    "dts-bundle": "^0.7.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "lodash": "^4.17.19",
     "prettier": "^2.0.5",
     "ts-loader": "^6.2.1",
@@ -44,14 +45,10 @@
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
     "react": "^16.12.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "typescript": "^3.7.4"
   },
   "files": [
     "lib/**/*"
-  ],
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1"
-  }
+  ]
 }

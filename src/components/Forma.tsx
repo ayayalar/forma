@@ -7,18 +7,17 @@ import {
   FormItemErrorState,
   FormItemState,
   SubmitFormDataCallback,
-  Validator,
   ValidatorResult,
 } from '../forma-types';
 import { Dispatch, useCallback, useState } from 'react';
+import { Form, FormOptions } from 'components/Form';
 
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import mapValues from 'lodash/mapValues';
-import { Form, FormOptions } from 'components/Form';
 
-interface FormaProps {
+export interface FormaProps {
   dispatcher?: (action: AnyAction) => void;
   storeState?: Store;
   children?: React.ReactNode;
@@ -26,7 +25,9 @@ interface FormaProps {
 
 const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
   const [artifact, setArtifact] = useState<Artifact>({});
-  const [formItemErrorState, setFormErrorState] = useState<FormItemErrorState>({} as FormItemErrorState);
+  const [formItemErrorState, setFormErrorState] = useState<FormItemErrorState>(
+    {} as FormItemErrorState
+  );
   const [formItemState, setFormState] = useState<FormItemState>({} as FormItemState);
 
   const getState = useCallback(
@@ -53,8 +54,10 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
     [artifact, setArtifact]
   );
 
-  const getFormItem = (key: string) => formItemState[key];
-  const getFormItemError = useCallback((key: string) => formItemErrorState[key], [formItemErrorState]);
+  const getFormItem = useCallback((key: string) => formItemState[key], [formItemState]);
+  const getFormItemError = useCallback((key: string) => formItemErrorState[key], [
+    formItemErrorState,
+  ]);
 
   const updateFormItem = useCallback(
     (name: string, formItemData: FormItemData): void => {
@@ -84,6 +87,7 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
     [formItemErrorState, getFormItemError, setFormErrorState]
   );
 
+  /*
   const isFormItemValidUtil = (validators: Validator[]): boolean => {
     try {
       const validatorResults = validators.map((validator: Validator) => validator(formOptions)());
@@ -93,6 +97,7 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
       return false;
     }
   };
+  */
 
   const submitForm = (cb: (callbackProps: SubmitFormDataCallback) => void): void => {
     if (Object.keys(formItemState).length > 0) {
@@ -102,7 +107,6 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
         }
         return (
           formItemErrorState[key] && !formItemErrorState[key].isValid
-
           // || isFormItemValidUtil(get(component.props, 'validators', []) as Validator[])
         );
       });
@@ -111,7 +115,9 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
         return obj.value;
       });
 
-      invalidFields.length > 0 ? cb({ isValid: false }) : cb({ values: callbackData, isValid: true });
+      invalidFields.length > 0
+        ? cb({ isValid: false })
+        : cb({ values: callbackData, isValid: true });
     }
   };
 
@@ -130,8 +136,8 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
   return <Form {...formOptions}>{children}</Form>;
 };
 
-type OwnProps = Pick<FormaProps, 'children'>;
-type DispatchProps = Pick<FormaProps, 'dispatcher'>;
+export type OwnProps = Pick<FormaProps, 'children'>;
+export type DispatchProps = Pick<FormaProps, 'dispatcher'>;
 
 const mapStateToProps = (state: Store<any, AnyAction>, ownProps: OwnProps): FormaProps => ({
   storeState: state,
@@ -142,6 +148,9 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>): DispatchProps => ({
   dispatcher: (action: AnyAction): void => dispatch(action),
 });
 
-const ConnectedForma = connect<FormaProps, DispatchProps, OwnProps, Store<any, AnyAction>>(mapStateToProps, mapDispatchToProps)(Forma);
+const ConnectedForma = connect<FormaProps, DispatchProps, OwnProps, Store<any, AnyAction>>(
+  mapStateToProps,
+  mapDispatchToProps
+)(Forma);
 
-export { ConnectedForma, DispatchProps, FormaProps };
+export { ConnectedForma };

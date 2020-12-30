@@ -13,7 +13,9 @@ const useValidate = (validate: boolean, name: string, validators: Validator[] = 
   const formItem = formOptions.getFormItem(name);
 
   useEffect(() => {
-    validate && validators?.length > 0 && validateUtil(name, formItem, validators, { ...formOptions });
+    validate &&
+      validators?.length > 0 &&
+      validateUtil(name, formItem, validators, { ...formOptions });
   }, [name, formItem, validators, formOptions, validate]);
 };
 
@@ -48,7 +50,7 @@ const useInitialize = <T>(name: string, value: T, initialValue: T, isRequired?: 
         });
       }
     }
-  }, [getFormItem, updateFormItem]);
+  }, [getFormItem, initialValue, isRequired, name, updateFormItem, value]);
 };
 
 export { FormContext, useForm, useInitialize, useValidate };

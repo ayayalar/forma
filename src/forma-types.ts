@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux';
 import { FormOptions } from 'components/Form';
 
-interface FormContextProps {
+export interface FormContextProps {
   addArtifact: AddArtifact;
   dispatchAction?: DispatchAction;
   getArtifact: GetArtifact;
@@ -13,61 +13,40 @@ interface FormContextProps {
   updateFormItemError: UpdateFormItemError;
 }
 
-interface Artifact {
+export interface Artifact {
   [name: string]: unknown;
 }
 
-interface FormItemState {
+export interface FormItemState {
   [name: string]: FormItemData;
 }
 
-interface FormItemErrorState {
+export interface FormItemErrorState {
   [name: string]: ValidatorResult;
 }
 
-interface FormItemData {
+export interface FormItemData {
   value?: unknown;
   isRequired: boolean;
   isDirty: boolean;
 }
 
-interface ValidatorResult {
+export interface ValidatorResult {
   isValid: boolean;
   error: string;
 }
 
-type SubmitFormDataCallback = { values?: { [key: string]: any }; isValid: boolean };
+export type SubmitFormDataCallback = { values?: { [key: string]: any }; isValid: boolean };
 
-type SubmitFormData = (cb: (callbackProps: SubmitFormDataCallback) => void) => void;
-type GetState = (key: string) => any;
-type DispatchAction = <T extends AnyAction>(action: T) => T;
+export type SubmitFormData = (cb: (callbackProps: SubmitFormDataCallback) => void) => void;
+export type GetState = (key: string) => any;
+export type DispatchAction = <T extends AnyAction>(action: T) => T;
 
-type GetFormItem = (key: string) => FormItemData;
-type UpdateFormItem = (name: string, formItemData: FormItemData) => void;
-type GetFormItemError = (key: string) => ValidatorResult;
-type UpdateFormItemError = (name: string, validatorResult: ValidatorResult) => void;
-type GetArtifact = (key: string) => unknown;
-type AddArtifact = (key: string, value: unknown) => void;
-type Validator = (formOptions: FormOptions) => () => ValidatorResult;
-type FormaFunction<T> = (formOptions: FormOptions) => T;
-
-export {
-  AddArtifact,
-  Artifact,
-  DispatchAction,
-  FormaFunction,
-  FormContextProps,
-  FormItemData,
-  FormItemErrorState,
-  FormItemState,
-  GetArtifact,
-  GetFormItem,
-  GetFormItemError,
-  GetState,
-  SubmitFormData,
-  SubmitFormDataCallback,
-  UpdateFormItem,
-  UpdateFormItemError,
-  Validator,
-  ValidatorResult,
-};
+export type GetFormItem = (key: string) => FormItemData;
+export type UpdateFormItem = (name: string, formItemData: FormItemData) => void;
+export type GetFormItemError = (key: string) => ValidatorResult;
+export type UpdateFormItemError = (name: string, validatorResult: ValidatorResult) => void;
+export type GetArtifact = (key: string) => unknown;
+export type AddArtifact = (key: string, value: unknown) => void;
+export type Validator = (formOptions: FormOptions) => () => ValidatorResult;
+export type FormaFunction<T> = (formOptions: FormOptions) => T;

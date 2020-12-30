@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { FormContext } from '../hooks';
+
 import {
   AddArtifact,
+  DispatchAction,
   GetArtifact,
   GetFormItem,
   GetFormItemError,
   GetState,
+  SubmitFormData,
   UpdateFormItem,
   UpdateFormItemError,
-  DispatchAction,
-  SubmitFormData,
 } from '../forma-types';
 
-interface FormOptions {
+import { FormContext } from '../hooks';
+
+export interface FormOptions {
   addArtifact: AddArtifact;
   getArtifact: GetArtifact;
   dispatchAction?: DispatchAction;
@@ -41,10 +43,11 @@ const Form: React.FC<FormProps> = (props) => {
         submitForm: props.submitForm,
         updateFormItem: props.updateFormItem,
         updateFormItemError: props.updateFormItemError,
-      }}>
+      }}
+    >
       {props.children}
     </FormContext.Provider>
   );
 };
 
-export { Form, FormOptions };
+export { Form };

@@ -1,11 +1,11 @@
 import {
   Artifact,
   DispatchAction,
-  FormaFunction,
   FormContextProps,
   FormItemData,
   FormItemErrorState,
   FormItemState,
+  FormaFunction,
   GetFormItem,
   GetFormItemError,
   GetState,
@@ -16,9 +16,10 @@ import {
   Validator,
   ValidatorResult,
 } from './forma-types';
-import { DispatchProps, ConnectedForma, FormaProps } from './components/Forma';
-import { useForm, useInitialize, useValidate } from './hooks';
+import { ConnectedForma, DispatchProps, FormaProps } from './components/Forma';
 import { getQueryParamsUtil, scrollToInvalidFieldsUtil, validateUtil } from './utils';
+import { useForm, useInitialize, useValidate } from './hooks';
+
 import { FormOptions } from './components/Form';
 
 export {

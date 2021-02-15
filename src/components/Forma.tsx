@@ -115,9 +115,7 @@ const Forma: React.FC<FormaProps> = ({ storeState, dispatcher, children }) => {
         return obj.value;
       });
 
-      invalidFields.length > 0
-        ? cb({ isValid: false })
-        : cb({ values: callbackData, isValid: true });
+      cb({ isValid: invalidFields.length === 0, values: callbackData });
     }
   };
 

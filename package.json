@@ -1,7 +1,7 @@
 {
   "name": "@ayayalar/forma",
-  "version": "1.1.0",
-  "description": "React Form Lib.",
+  "version": "1.1.1",
+  "description": "React Form & Form Validation framework.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -16,7 +16,9 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
-    "react form lib."
+    "react",
+    "react form",
+    "react validation"
   ],
   "author": "Arif Yayalar, ayayalar@gmail.com",
   "license": "ISC",

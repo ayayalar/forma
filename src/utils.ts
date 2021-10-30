@@ -3,7 +3,7 @@ import { FormItemData, Validator } from './forma-types';
 import { FormOptions } from 'components/Form';
 import get from 'lodash/get';
 
-const getQueryParamsUtil = (queryParams: {}, path: string): any =>
+const getQueryParamsUtil = (queryParams: Record<string, unknown>, path: string): any =>
   get(queryParams, path, undefined);
 
 const scrollToInvalidFieldsUtil = (invalidFields: string[]): void => {

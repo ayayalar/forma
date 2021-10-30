@@ -12,8 +12,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'prettier/react',
+    'prettier'
   ],
   parserOptions: {
     ecmaVersion: 2018,
